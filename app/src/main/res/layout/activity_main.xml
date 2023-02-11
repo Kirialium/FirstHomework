@@ -24,19 +24,35 @@
 
     <EditText
         android:id="@+id/edit_text_count_money"
-        android:layout_width="300dp"
+        android:layout_width="150dp"
         android:layout_height="60dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="24dp"
+        android:autofillHints=""
         android:backgroundTint="@color/white"
-        android:gravity="center"
-        android:textSize="28sp"
         android:fontFamily="@font/coolvetica"
+        android:gravity="center"
         android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        android:textSize="28sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        android:autofillHints=""
         tools:ignore="LabelFor" />
+
+    <Button
+        android:id="@+id/button_ok"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="312dp"
+        android:backgroundTint="@color/dark_orange"
+        android:fontFamily="@font/coolvetica"
+        android:text="OK"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.341"
+        app:layout_constraintStart_toEndOf="@+id/edit_text_count_money"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
