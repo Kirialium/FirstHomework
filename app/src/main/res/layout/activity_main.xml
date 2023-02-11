@@ -11,39 +11,23 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="396dp"
+        android:layout_marginBottom="660dp"
+        android:fontFamily="@font/coolvetica"
         android:text="Сколько у тебя денег?"
         android:textColor="@color/white"
         android:textSize="30sp"
-        android:fontFamily="@font/coolvetica"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="HardcodedText,MissingConstraints" />
-
-    <EditText
-        android:id="@+id/edit_text_count_money"
-        android:layout_width="150dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="24dp"
-        android:autofillHints=""
-        android:backgroundTint="@color/white"
-        android:fontFamily="@font/coolvetica"
-        android:gravity="center"
-        android:inputType="number"
-        android:textSize="28sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        tools:ignore="LabelFor" />
 
     <Button
         android:id="@+id/button_ok"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginEnd="4dp"
-        android:layout_marginBottom="312dp"
+        android:layout_marginBottom="576dp"
         android:backgroundTint="@color/dark_orange"
         android:fontFamily="@font/coolvetica"
         android:text="OK"
@@ -54,5 +38,39 @@
         app:layout_constraintHorizontal_bias="0.341"
         app:layout_constraintStart_toEndOf="@+id/edit_text_count_money"
         tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/edit_text_count_money"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="20dp"
+        android:autofillHints=""
+        android:backgroundTint="@color/white"
+        android:fontFamily="@font/coolvetica"
+        android:gravity="center"
+        android:inputType="number"
+        android:textSize="28sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:ignore="LabelFor" />
+
+    <TextView
+        android:id="@+id/you_can"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha="0"
+        android:fontFamily="@font/coolvetica"
+        android:gravity="center"
+        android:text="Вы можете купить:"
+        android:textColor="@color/white"
+        android:textSize="26sp"
+        android:layout_marginTop="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_count_money"
+        tools:ignore="MissingConstraints" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
