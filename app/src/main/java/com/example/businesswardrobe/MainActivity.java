@@ -3,9 +3,12 @@ package com.example.businesswardrobe;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -31,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
         Objects.requireNonNull(this.getSupportActionBar()).hide();
         setContentView(R.layout.activity_main);
 
+        setSystemBarsColor();
+
         btn_ok = findViewById(R.id.button_ok);
         edit_count = findViewById(R.id.edit_text_count_money);
         youCan = findViewById(R.id.you_can);
@@ -45,10 +50,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(TextUtils.isEmpty(edit_count.getText().toString())){
-                    Toast.makeText(getApplicationContext(), "Type count", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Введите сумму", Toast.LENGTH_SHORT).show();
                 }else {
                     money = Integer.parseInt(edit_count.getText().toString());
                     youCan.setAlpha(1);
+                    setStartAlpha();
                     fillAssortment(money);
                 }
             }
@@ -109,56 +115,71 @@ public class MainActivity extends AppCompatActivity {
         else{
             textView2.setAlpha(1);
             textView2.setText("Вы не можете купить весь набор, но вы можете купить это по отдельности:");
-            int sum = money - (int)shirt.total;
+            int money2 = money - (int)shirt.total;
             int count = 1;
-            while(count <= 4){
+            boolean isWork = true;
+            while(count <= 4 && isWork){
                 switch(count){
                     case 1:
-                        sum = sum - (int)hat.total;
+                        money2 = money2 - (int)hat.total;
                         textView3.setAlpha(1);
-                        textView3.setText("Сорочка");
-                        if(money - sum >= 0){
+                        textView3.setText("Сорочка - 19м");
+                        if(money2 > 0){
                             count++;
                         }
                         else{
+                            isWork = false;
                             break;
                         }
                         break;
                     case 2:
-                        sum = sum - (int)shoes.total;
+                        money2 = money2 - (int)shoes.total;
                         textView4.setAlpha(1);
-                        textView4.setText("Туфли(32% скидка!)");
-                        if(money - sum >= 0){
+                        textView4.setText("Шляпа - 25м(37% скидка)");
+                        if(money2 > 0){
                             count++;
                         }
                         else{
+                            isWork = false;
                             break;
                         }
                         break;
                     case 3:
-                        sum = sum - (int)suit.total;
+                        money2 = money2 - (int)suit.total;
                         textView5.setAlpha(1);
-                        textView5.setText("Костюм(44% скидка!)");
-                        if(money - sum >= 0){
+                        textView5.setText("Туфли - 41м(32% скидка)");
+                        if(money2 > 0){
                             count++;
                         }
                         else{
+                            isWork = false;
                             break;
                         }
                         break;
                     case 4:
-                        sum = sum - (int)coat.total;
                         textView6.setAlpha(1);
-                        textView6.setText("Пальто(77% скидка!)");
-                        if(money - sum >= 0){
-                            count++;
-                        }
-                        else{
-                            break;
-                        }
+                        textView6.setText("Деловой костюм 53м(44% скидка)");
+                        isWork = false;
                         break;
                 }
             }
+        }
+    }
+    public void setStartAlpha(){
+        textView3.setAlpha(0);
+        textView4.setAlpha(0);
+        textView5.setAlpha(0);
+        textView6.setAlpha(0);
+    }
+    public void setSystemBarsColor(){
+        if (Build.VERSION.SDK_INT >= 21) {
+            Window window = this.getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.setStatusBarColor(this.getResources().getColor(R.color.orange));
+        }
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setNavigationBarColor(getResources().getColor(R.color.orange));
         }
     }
 }
